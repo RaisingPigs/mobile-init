@@ -1,7 +1,5 @@
 <template>
-  <div>
-    测试
-  </div>
+  <div>测试</div>
 </template>
 
 <script setup lang="ts">
@@ -10,6 +8,4 @@ defineOptions({
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

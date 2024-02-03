@@ -1,6 +1,6 @@
 export interface BaseResponse<T> {
-  code: number,
-  data: T,
-  msg: string,
-  desc: string
+  code: number;
+  data: T;
+  msg: string;
+  desc: string;
 }

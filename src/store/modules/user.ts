@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 import { getToken, removeToken, setToken } from "@/utils/cache/cookies";
 import type { LoginForm, UserVO } from "@/api/login/type";
 import { reqLogin, reqLoginUser, reqLogout } from "@/api/login";
-import type { BaseResponse } from "/types/api";
+import type { BaseResponse } from "../../../types/api";
 
 export const useUserStore = defineStore("user", () => {
   const token = ref<string>(getToken() || "");
@@ -32,7 +32,6 @@ export const useUserStore = defineStore("user", () => {
     roles.value = [data.role];
   };
 
-
   /** 登出 */
   const logout = async () => {
     await reqLogout();
@@ -49,8 +48,16 @@ export const useUserStore = defineStore("user", () => {
     loginUser.value = undefined;
   };
 
-
-  return { token, loginUser, roles, setRoles, login, getLoginUser, logout, resetToken };
+  return {
+    token,
+    loginUser,
+    roles,
+    setRoles,
+    login,
+    getLoginUser,
+    logout,
+    resetToken
+  };
 });
 
 /** 在 setup 外使用 */

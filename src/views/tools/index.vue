@@ -5,7 +5,9 @@
     </div>
     <van-space>
       <van-button type="success" @click="handleLogin">登录</van-button>
-      <van-button type="danger" @click="handleGetLoginUser">获取信息</van-button>
+      <van-button type="danger" @click="handleGetLoginUser"
+        >获取信息</van-button
+      >
       <van-button type="danger" @click="handleLogout">退出</van-button>
     </van-space>
     <div
@@ -18,12 +20,10 @@
   </div>
 </template>
 
-
 <script setup lang="ts" name="Tools">
-import { showFailToast, showSuccessToast } from "vant";
+// import { showFailToast, showSuccessToast } from "vant";
 import "vant/es/toast/style";
 import { useUserStoreHook } from "@/store/modules/user";
-
 
 const handleLogin = async () => {
   await useUserStoreHook().login({

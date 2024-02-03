@@ -19,7 +19,9 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "lint:eslint": "eslint --cache --max-warnings 0 \"{src,tests,types}/**/*.{vue,js,jsx,ts,tsx}\" --fix",
+    "lint:prettier": "prettier --write \"{src,tests,types}/**/*.{vue,js,jsx,ts,tsx,json,css,less,scss,html,md}\"",
+    "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "release": "standard-version",
     "prepare": "husky install"
   },

@@ -3,12 +3,5 @@
   "singleQuote": false,
   "arrowParens": "avoid",
   "trailingComma": "none",
-  "overrides": [
-    {
-      "files": "*.html",
-      "options": {
-        "parser": "html"
-      }
-    }
-  ]
+  "semi": true
 }

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 
 const active = ref(0);
 const tabbarData = ref<TabbarData[]>([]);
@@ -21,11 +21,11 @@ import routes from "@/router/routes";
 import type { RouteRecordRaw } from "vue-router";
 
 interface TabbarData {
-  icon: string,
-  title: string,
+  icon: string;
+  title: string;
   to: {
-    name: string
-  }
+    name: string;
+  };
 }
 
 const getTabbarData = () => {
@@ -33,8 +33,8 @@ const getTabbarData = () => {
     return;
   }
 
-  tabbarData.value = routes[0].children?.map(
-    (route: RouteRecordRaw) => route2TabbarData(route)
+  tabbarData.value = routes[0].children?.map((route: RouteRecordRaw) =>
+    route2TabbarData(route)
   ) as TabbarData[];
 };
 
@@ -51,5 +51,4 @@ const route2TabbarData = (route: RouteRecordRaw): TabbarData => {
 onMounted(() => {
   getTabbarData();
 });
-
 </script>

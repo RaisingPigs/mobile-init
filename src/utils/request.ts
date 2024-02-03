@@ -2,7 +2,7 @@ import axios, { type AxiosInstance, type AxiosResponse } from "axios";
 import { useUserStoreHook } from "@/store/modules/user";
 import { getToken } from "./cache/cookies";
 import NProgress from "nprogress";
-import type { BaseResponse } from "/types/api";
+import type { BaseResponse } from "../../types/api";
 import { showFailToast } from "vant";
 
 /** 退出登录并强制刷新页面（会重定向到登录页） */
@@ -24,13 +24,13 @@ function createService() {
 
   // 请求拦截
   request.interceptors.request.use(
-    (config) => {
+    config => {
       NProgress.start();
       config.headers.PanToken = getToken() || undefined;
       return config;
     },
     // 发送失败
-    (error) => Promise.reject(error)
+    error => Promise.reject(error)
   );
 
   // 响应拦截（可根据具体业务作出相应的调整）
@@ -48,7 +48,8 @@ function createService() {
 
       // 二进制数据则直接返回
       const responseType = response.request?.responseType;
-      if (responseType === "blob" || responseType === "arraybuffer") return respData;
+      if (responseType === "blob" || responseType === "arraybuffer")
+        return respData;
 
       // 这个 code 是和后端约定的业务 code
       const code = respData.code;
@@ -65,7 +66,7 @@ function createService() {
 
       return respData;
     },
-    (error) => {
+    error => {
       NProgress.done();
       // status 是 HTTP 状态码
       const status: number = error.response?.status || -1;
@@ -76,7 +77,7 @@ function createService() {
           break;
         case 401:
           // Token 过期时
-          logout()
+          logout();
           break;
         case 403:
           error.message = "拒绝访问";
